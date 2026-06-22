@@ -107,7 +107,7 @@
         }
 
         .content-box {
-            max-width: 520px;
+            max-width: 100%;
             margin: 0 auto;
             background: transparent;
         }
@@ -737,35 +737,44 @@
 
             .main-wrap {
                 max-width: 100%;
+                padding-top: 68px;
             }
 
             .content-box {
-                max-width: 600px;
+                max-width: 100%;
+                width: 100%;
                 background: var(--bg-white);
-                border-radius: 24px;
-                box-shadow: 0 20px 60px rgba(102, 57, 224, 0.1);
-                margin: 20px auto;
+                border-radius: 0;
+                box-shadow: none;
+                margin: 0 auto;
                 overflow: hidden;
             }
 
             .hero-section {
-                border-radius: 24px 24px 0 0;
+                border-radius: 0;
+                padding: 28px 40px 32px;
+            }
+
+            .video-section {
+                padding: 36px 40px 40px;
             }
 
             .feedback-section {
                 border-radius: 0;
+                padding: 40px 0 44px;
             }
 
             .next-section {
-                border-radius: 0 0 24px 24px;
+                border-radius: 0;
+                padding: 44px 40px 60px;
             }
 
             .hero-headline {
-                font-size: 34px;
+                font-size: 38px;
             }
 
             .video-heading, .next-heading {
-                font-size: 28px;
+                font-size: 30px;
             }
 
             .trust-grid {
@@ -774,17 +783,35 @@
             }
 
             .feedback-pair {
-                max-width: 560px;
+                max-width: 100%;
+                width: calc(50% - 40px);
+            }
+
+            .video-container {
+                max-width: 100%;
+            }
+
+            .video-note {
+                max-width: 100%;
+            }
+
+            .cta-main, .video-cta, .next-btn {
+                max-width: 480px;
             }
         }
 
         @media (min-width: 1200px) {
             .content-box {
-                max-width: 700px;
+                max-width: 100%;
             }
 
             .feedback-pair {
-                max-width: 660px;
+                max-width: 100%;
+                width: calc(50% - 40px);
+            }
+
+            .hero-headline {
+                font-size: 42px;
             }
         }
 
@@ -800,6 +827,7 @@
             transform: translateY(0);
         }
     </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
