@@ -110,7 +110,6 @@
         .hero-section {
             background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
             padding: 28px 20px 32px;
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
@@ -139,17 +138,19 @@
             pointer-events: none;
         }
 
-        /* Logo */
+        /* Logo - Left aligned, small professional */
         .logo-wrap {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
+            text-align: left;
         }
 
         .logo-wrap img {
-            max-width: 160px;
+            max-width: 100px;
             height: auto;
-            border-radius: 12px;
+            border-radius: 8px;
+            display: block;
         }
 
         /* Subheadline badge */
@@ -198,8 +199,6 @@
             line-height: 1.6;
             margin-bottom: 28px;
             max-width: 420px;
-            margin-left: auto;
-            margin-right: auto;
             position: relative;
             z-index: 1;
         }
@@ -296,6 +295,83 @@
             width: 20px;
             height: 20px;
             fill: currentColor;
+        }
+
+        /* ===== URGENCY TIMER BAR ===== */
+        .urgency-bar {
+            background: linear-gradient(135deg, #FF4757 0%, #FF6B81 100%);
+            padding: 14px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .urgency-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .urgency-text {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timer-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timer-box {
+            background: rgba(0,0,0,0.25);
+            border-radius: 8px;
+            padding: 8px 12px;
+            min-width: 52px;
+            text-align: center;
+        }
+
+        .timer-num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            display: block;
+        }
+
+        .timer-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .timer-sep {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.6);
         }
 
         /* ===== SECTION 2: WATCH VIDEO ===== */
@@ -442,7 +518,7 @@
         /* ===== SECTION 3: WHATSAPP FEEDBACK ===== */
         .feedback-section {
             background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
-            padding: 40px 20px 44px;
+            padding: 40px 16px 44px;
         }
 
         .feedback-heading {
@@ -458,28 +534,28 @@
             text-align: center;
             font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .feedback-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
             max-width: 480px;
             margin: 0 auto;
         }
 
         .feedback-card {
             background: var(--bg-white);
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-light);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
             transition: all 0.25s ease;
         }
 
         .feedback-card:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         .feedback-card img {
@@ -488,32 +564,6 @@
             display: block;
             aspect-ratio: 9/16;
             object-fit: cover;
-        }
-
-        .feedback-placeholder {
-            width: 100%;
-            aspect-ratio: 9/16;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .feedback-placeholder svg {
-            width: 40px;
-            height: 40px;
-            fill: #fff;
-        }
-
-        .feedback-placeholder span {
-            font-size: 12px;
-            font-weight: 600;
-            opacity: 0.9;
         }
 
         /* ===== SECTION 4: NEXT STEP ===== */
@@ -657,36 +707,8 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* ===== WHATSAPP FLOAT ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 16px;
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:active {
-            transform: scale(0.92);
-        }
-
-        .whatsapp-float svg {
-            width: 28px;
-            height: 28px;
-            fill: #fff;
-        }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -701,9 +723,7 @@
         <!-- ===== SECTION 1: HERO ===== -->
         <section class="hero-section" id="hero">
             <div class="logo-wrap fade-in">
-                <a href="https://ibb.co/sdYCZFs2" target="_blank">
-                    <img src="https://i.ibb.co/tTrz9bY4/Whats-App-Image-2026-06-15-at-21-39-44.jpg" alt="Empavya Logo" border="0">
-                </a>
+                <img src="https://i.ibb.co/sphj6NMF/Screenshot-2026-06-22-at-11-10-56-PM.png" alt="Empavya Logo">
             </div>
 
             <div class="sub-badge fade-in">✨ 27 Practical Skills For Modern Women</div>
@@ -759,6 +779,27 @@
             </a>
         </section>
 
+        <!-- ===== URGENCY TIMER BAR ===== -->
+        <div class="urgency-bar" id="urgencyBar">
+            <div class="urgency-text">⚠️ LIMITED TIME: This Opportunity Closes In</div>
+            <div class="timer-wrap">
+                <div class="timer-box">
+                    <span class="timer-num" id="hours">04</span>
+                    <span class="timer-label">Hours</span>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-box">
+                    <span class="timer-num" id="minutes">59</span>
+                    <span class="timer-label">Mins</span>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-box">
+                    <span class="timer-num" id="seconds">59</span>
+                    <span class="timer-label">Secs</span>
+                </div>
+            </div>
+        </div>
+
         <!-- ===== SECTION 2: WATCH VIDEO ===== -->
         <section class="video-section" id="video">
             <div class="fade-in">
@@ -801,30 +842,26 @@
                 <p class="feedback-sub">See what our community members are saying</p>
 
                 <div class="feedback-grid">
-                    <div class="feedback-card">
-                        <div class="feedback-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
-                            <span>[WHATSAPP_FEEDBACK_1]<br>Replace with screenshot</span>
-                        </div>
-                    </div>
-                    <div class="feedback-card">
-                        <div class="feedback-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
-                            <span>[WHATSAPP_FEEDBACK_2]<br>Replace with screenshot</span>
-                        </div>
-                    </div>
-                    <div class="feedback-card">
-                        <div class="feedback-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
-                            <span>[WHATSAPP_FEEDBACK_3]<br>Replace with screenshot</span>
-                        </div>
-                    </div>
-                    <div class="feedback-card">
-                        <div class="feedback-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
-                            <span>[WHATSAPP_FEEDBACK_4]<br>Replace with screenshot</span>
-                        </div>
-                    </div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/5gFzsCqR/1-pic.jpg" alt="Feedback 1" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/v6HqchdJ/2-pic.jpg" alt="Feedback 2" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/hx6cKw6Y/3-pic.jpg" alt="Feedback 3" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/CsPVxTJY/4-pic.jpg" alt="Feedback 4" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/bMV3DMrj/5-pic.jpg" alt="Feedback 5" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/Kxfgh5mw/6-pic.jpg" alt="Feedback 6" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/MDsF8kpB/7-pic.jpg" alt="Feedback 7" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/ccz6ctsS/8-pic.jpg" alt="Feedback 8" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/Gf9vxMns/9-pic.jpg" alt="Feedback 9" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/6Rrw9qnQ/10-pic.jpg" alt="Feedback 10" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/SDFBQMR8/11-pic.jpg" alt="Feedback 11" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/dsF85Cqv/12-pic.jpg" alt="Feedback 12" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/kVLjDfzp/13-pic.jpg" alt="Feedback 13" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/GQPLHQ41/14-pic.jpg" alt="Feedback 14" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/sJwqMpXg/16-pic.jpg" alt="Feedback 16" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/tTzwykRW/17-pic.jpg" alt="Feedback 17" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/XrnX3zgp/18-pic.jpg" alt="Feedback 18" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/hxWtbGb0/19-pic.jpg" alt="Feedback 19" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/wZtX3xx3/20-pic.jpg" alt="Feedback 20" loading="lazy"></div>
+                    <div class="feedback-card"><img src="https://i.ibb.co/MxMVj6CP/21-pic.jpg" alt="Feedback 21" loading="lazy"></div>
                 </div>
             </div>
         </section>
@@ -842,7 +879,7 @@
                     In the next page, you will discover the complete Empavya program, all 27 skills, training structure, benefits, and how you can get started.
                 </p>
 
-                <a href="[PAGE_2_URL]" class="next-btn">
+                <a href="https://empavya.vercel.app/" class="next-btn">
                     NEXT →
                     <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
                 </a>
@@ -855,11 +892,6 @@
         </footer>
 
     </div>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-        <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
-    </a>
 
     <script>
         // Scroll animations
@@ -901,6 +933,48 @@
                 }
             });
         });
+
+        // Urgency Countdown Timer
+        function startTimer() {
+            // Set timer to 5 hours from now
+            let endTime = localStorage.getItem('empavya_timer_end');
+            if (!endTime) {
+                endTime = Date.now() + (5 * 60 * 60 * 1000); // 5 hours
+                localStorage.setItem('empavya_timer_end', endTime);
+            } else {
+                endTime = parseInt(endTime);
+                // Reset if expired
+                if (Date.now() > endTime) {
+                    endTime = Date.now() + (5 * 60 * 60 * 1000);
+                    localStorage.setItem('empavya_timer_end', endTime);
+                }
+            }
+
+            function updateTimer() {
+                const now = Date.now();
+                const diff = endTime - now;
+
+                if (diff <= 0) {
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        startTimer();
     </script>
 
 </body>
