@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Empavya - Empowering Women With 27 Practical Skills</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6639E0;
+            --primary-dark: #5229C7;
+            --primary-light: #9F7DEA;
+            --accent-green: #38CA50;
+            --accent-green-dark: #2DB542;
+            --bg-light: #F6F9FA;
+            --bg-white: #FFFFFF;
+            --text-dark: #141517;
+            --text-secondary: #5A5F66;
+            --text-muted: #8A8F96;
+            --border-light: #E8ECF0;
+            --shadow-soft: 0 4px 20px rgba(102, 57, 224, 0.12);
+            --shadow-medium: 0 8px 32px rgba(102, 57, 224, 0.18);
+            --shadow-green: 0 4px 20px rgba(56, 202, 80, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== STICKY CTA BAR ===== */
+        .sticky-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--primary) 0%, #7B4FEB 100%);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 2px 20px rgba(102, 57, 224, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-bar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .sticky-bar-text {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .sticky-bar-btn {
+            background: var(--accent-green);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 3px 12px rgba(56, 202, 80, 0.35);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .sticky-bar-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 1px 6px rgba(56, 202, 80, 0.3);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .main-wrap {
+            padding-top: 68px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ===== SECTION 1: HERO ===== */
+        .hero-section {
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            padding: 28px 20px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(159, 125, 234, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle, rgba(56, 202, 80, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Logo */
+        .logo-wrap {
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-wrap img {
+            max-width: 160px;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        /* Subheadline badge */
+        .sub-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(102, 57, 224, 0.08) 0%, rgba(159, 125, 234, 0.08) 100%);
+            border: 1px solid rgba(102, 57, 224, 0.12);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Headline */
+        .hero-headline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-headline .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-headline .highlight-green {
+            color: var(--accent-green);
+        }
+
+        /* Subheadline */
+        .hero-sub {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 28px;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Trust Points */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            max-width: 440px;
+            margin: 0 auto 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-white);
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .trust-item:active {
+            transform: scale(0.98);
+        }
+
+        .trust-icon {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .trust-icon.green {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #4DD865 100%);
+        }
+
+        .trust-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        /* CTA Button */
+        .cta-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-dark) 100%);
+            color: #fff;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            padding: 18px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: var(--shadow-green);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 20px rgba(56, 202, 80, 0.25); }
+            50% { box-shadow: 0 6px 30px rgba(56, 202, 80, 0.4); }
+        }
+
+        .cta-main:active {
+            transform: scale(0.97);
+        }
+
+        .cta-main svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* ===== SECTION 2: WATCH VIDEO ===== */
+        .video-section {
+            background: var(--bg-white);
+            padding: 36px 20px 40px;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        .section-label .dot {
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .video-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .video-sub {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* Video CTA */
+        .video-cta-wrap {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .video-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #fff;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .video-cta:active {
+            transform: scale(0.97);
+        }
+
+        .video-cta .play-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-cta .play-icon svg {
+            width: 10px;
+            height: 10px;
+            fill: #fff;
+            margin-left: 2px;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .video-note {
+            background: linear-gradient(135deg, rgba(102, 57, 224, 0.06) 0%, rgba(159, 125, 234, 0.06) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 16px 18px;
+            border-radius: 0 12px 12px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .video-note strong {
+            color: var(--primary);
+        }
+
+        /* ===== SECTION 3: WHATSAPP FEEDBACK ===== */
+        .feedback-section {
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            padding: 40px 20px 44px;
+        }
+
+        .feedback-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .feedback-sub {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .feedback-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.25s ease;
+        }
+
+        .feedback-card:active {
+            transform: scale(0.98);
+        }
+
+        .feedback-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+        }
+
+        .feedback-placeholder {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feedback-placeholder svg {
+            width: 40px;
+            height: 40px;
+            fill: #fff;
+        }
+
+        .feedback-placeholder span {
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* ===== SECTION 4: NEXT STEP ===== */
+        .next-section {
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            padding: 44px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+            border-radius: 2px;
+        }
+
+        .next-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .next-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .next-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .next-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 420px;
+            margin: 0 auto 28px;
+        }
+
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #fff;
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            padding: 20px 44px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            animation: pulse-purple 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-purple {
+            0%, 100% { box-shadow: 0 4px 20px rgba(102, 57, 224, 0.2); }
+            50% { box-shadow: 0 6px 30px rgba(102, 57, 224, 0.35); }
+        }
+
+        .next-btn:active {
+            transform: scale(0.97);
+        }
+
+        .next-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        .footer strong {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 520px) {
+            .main-wrap {
+                border-left: 1px solid var(--border-light);
+                border-right: 1px solid var(--border-light);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-headline {
+                font-size: 34px;
+            }
+            .video-heading, .next-heading {
+                font-size: 28px;
+            }
+            .trust-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .feedback-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 16px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.92);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-bar" id="stickyBar">
+        <div class="sticky-bar-text">⏰ Watch the full video below to unlock your next step</div>
+        <a href="#video" class="sticky-bar-btn">WATCH NOW ↓</a>
+    </div>
+
+    <div class="main-wrap">
+
+        <!-- ===== SECTION 1: HERO ===== -->
+        <section class="hero-section" id="hero">
+            <div class="logo-wrap fade-in">
+                <a href="https://ibb.co/sdYCZFs2" target="_blank">
+                    <img src="https://i.ibb.co/tTrz9bY4/Whats-App-Image-2026-06-15-at-21-39-44.jpg" alt="Empavya Logo" border="0">
+                </a>
+            </div>
+
+            <div class="sub-badge fade-in">✨ 27 Practical Skills For Modern Women</div>
+
+            <h1 class="hero-headline fade-in">
+                Stop Depending On Others.<br>
+                <span class="highlight">Learn Real Skills.</span><br>
+                <span class="highlight-green">Build Your Own Future.</span>
+            </h1>
+
+            <p class="hero-sub fade-in">
+                Empavya helps women master <strong>27 practical skills</strong> through live daily training — so you can earn independently from home, without any MLM or network marketing.
+            </p>
+
+            <div class="trust-grid fade-in">
+                <div class="trust-item">
+                    <div class="trust-icon">✓</div>
+                    <span class="trust-text">27 Practical Skills</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">✓</div>
+                    <span class="trust-text">Live Daily Training</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon green">✓</div>
+                    <span class="trust-text">Certificate Included</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon green">✓</div>
+                    <span class="trust-text">Work From Home</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">✓</div>
+                    <span class="trust-text">Beginner Friendly</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">✓</div>
+                    <span class="trust-text">No MLM</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon green">✓</div>
+                    <span class="trust-text">No Network Marketing</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon green">✓</div>
+                    <span class="trust-text">No Chain System</span>
+                </div>
+            </div>
+
+            <a href="#video" class="cta-main fade-in">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                WATCH THE FULL VIDEO
+            </a>
+        </section>
+
+        <!-- ===== SECTION 2: WATCH VIDEO ===== -->
+        <section class="video-section" id="video">
+            <div class="fade-in">
+                <div class="section-label">
+                    <span class="dot"></span>
+                    Important
+                </div>
+
+                <h2 class="video-heading">Watch This Full Video</h2>
+                <p class="video-sub">This short presentation will help you understand how thousands of women are upgrading their skills and creating better opportunities through Empavya.</p>
+
+                <div class="video-cta-wrap">
+                    <a href="#video-player" class="video-cta">
+                        <span class="play-icon">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </span>
+                        WATCH THIS FULL VIDEO
+                    </a>
+                </div>
+
+                <div class="video-container" id="video-player">
+                    <iframe 
+                        src="https://www.youtube.com/embed/D40eGzrgkMY?rel=0&modestbranding=1&playsinline=1" 
+                        title="Empavya Introduction Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="video-note">
+                    <strong>⚠️ Please watch this video till the end</strong> before moving forward. Everything you need to know about Empavya is explained clearly in this presentation.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: WHATSAPP FEEDBACK ===== -->
+        <section class="feedback-section" id="feedback">
+            <div class="fade-in">
+                <h2 class="feedback-heading">Real Feedback From Real Women</h2>
+                <p class="feedback-sub">See what our community members are saying</p>
+
+                <div class="feedback-grid">
+                    <div class="feedback-card">
+                        <div class="feedback-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
+                            <span>[WHATSAPP_FEEDBACK_1]<br>Replace with screenshot</span>
+                        </div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
+                            <span>[WHATSAPP_FEEDBACK_2]<br>Replace with screenshot</span>
+                        </div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
+                            <span>[WHATSAPP_FEEDBACK_3]<br>Replace with screenshot</span>
+                        </div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
+                            <span>[WHATSAPP_FEEDBACK_4]<br>Replace with screenshot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: NEXT STEP ===== -->
+        <section class="next-section" id="next">
+            <div class="fade-in">
+                <div class="next-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </div>
+
+                <h2 class="next-heading">Ready To See The<br>Complete System?</h2>
+
+                <p class="next-text">
+                    In the next page, you will discover the complete Empavya program, all 27 skills, training structure, benefits, and how you can get started.
+                </p>
+
+                <a href="[PAGE_2_URL]" class="next-btn">
+                    NEXT →
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <strong>Empavya</strong> — Empowering Women Since 2024
+        </footer>
+
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.83 11.83 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.52 5.83L0 24l6.33-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.55zM12 22a9.89 9.89 0 0 1-5.16-1.45l-.37-.22-3.75.98.99-3.66-.24-.38A9.88 9.88 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.46-7.46c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
+    </a>
+
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Sticky bar hide/show on scroll
+        let lastScroll = 0;
+        const stickyBar = document.getElementById('stickyBar');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 100) {
+                if (currentScroll > lastScroll) {
+                    stickyBar.classList.add('hidden');
+                } else {
+                    stickyBar.classList.remove('hidden');
+                }
+            } else {
+                stickyBar.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
