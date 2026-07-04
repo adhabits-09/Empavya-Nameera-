@@ -7,6 +7,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '922110713792082');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=922110713792082&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <style>
         :root {
             --primary: #6639E0;
@@ -835,7 +854,7 @@
     <!-- STICKY CTA BAR -->
     <div class="sticky-bar" id="stickyBar">
         <div class="sticky-bar-text">⏰ Watch the full video below to unlock your next step</div>
-        <a href="#video" class="sticky-bar-btn">WATCH NOW ↓</a>
+        <a href="#video" class="sticky-bar-btn pixel-cta">WATCH NOW ↓</a>
     </div>
 
     <div class="main-wrap">
@@ -894,7 +913,7 @@
                     </div>
                 </div>
 
-                <a href="#video" class="cta-main fade-in">
+                <a href="#video" class="cta-main pixel-cta">
                     <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     WATCH THE FULL VIDEO
                 </a>
@@ -933,7 +952,7 @@
                     <p class="video-sub">This short presentation will help you understand how thousands of women are upgrading their skills and creating better opportunities through Empavya.</p>
 
                     <div class="video-cta-wrap">
-                        <a href="#video-player" class="video-cta">
+                        <a href="#video-player" class="video-cta pixel-cta">
                             <span class="play-icon">
                                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </span>
@@ -1045,7 +1064,7 @@
                         In the next page, you will discover the complete Empavya program, all 27 skills, training structure, benefits, and how you can get started.
                     </p>
 
-                    <a href="https://start.empavya.com/" class="next-btn">
+                    <a href="https://start.empavya.com/" class="next-btn pixel-cta">
                         NEXT →
                         <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
                     </a>
@@ -1172,6 +1191,15 @@
                 });
             });
         }
+
+        // ===== META PIXEL CONTACT EVENT TRACKING =====
+        document.querySelectorAll('.pixel-cta').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Contact');
+                }
+            });
+        });
     </script>
 
 </body>
